@@ -30,7 +30,7 @@ class _WorkoutPlanRunScreenState extends State<WorkoutPlanRunScreen> {
   @override
   void initState() {
     super.initState();
-    // robimy kopię, żeby nie modyfikować oryginału
+    
     _exercises = widget.plan.exercises
         .map((e) => WorkoutExerciseEntry.fromJson(e.toJson()))
         .toList();
@@ -50,7 +50,7 @@ class _WorkoutPlanRunScreenState extends State<WorkoutPlanRunScreen> {
     });
 
     if (_restRemaining <= 0) {
-      // brak odpoczynku – od razu następna seria
+     
       _goToNextSetOrExercise();
       return;
     }
@@ -95,12 +95,12 @@ class _WorkoutPlanRunScreenState extends State<WorkoutPlanRunScreen> {
       }
 
       if (_currentSet > _currentEntry.sets) {
-        // kolejny exercise
+       
         if (_currentExerciseIndex < _exercises.length - 1) {
           _currentExerciseIndex++;
           _currentSet = 1;
         } else {
-          // koniec treningu
+         
           _showFinishDialog();
         }
       }
@@ -171,7 +171,7 @@ class _WorkoutPlanRunScreenState extends State<WorkoutPlanRunScreen> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Góra – info o postępie
+          
             Row(
               children: [
                 Chip(
@@ -185,7 +185,7 @@ class _WorkoutPlanRunScreenState extends State<WorkoutPlanRunScreen> {
             ),
             const SizedBox(height: 16),
 
-            // Nazwa ćwiczenia + obrazek
+        
             if (entry.imageUrl.isNotEmpty)
               AspectRatio(
                 aspectRatio: 16 / 9,

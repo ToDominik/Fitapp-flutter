@@ -6,7 +6,7 @@ import '../viewmodels/exercise_list_viewmodel.dart';
 
 import '../../data/models/workout_plan.dart';
 import 'workout_plan_edit_screen.dart';
-import 'workout_plan_run_screen.dart'; // będzie za chwilę
+import 'workout_plan_run_screen.dart'; 
 import 'exercise_list_screen.dart';
 import 'workout_plan_list_screen.dart';
 
@@ -125,9 +125,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // -----------------------------------------------------------
+ 
   // QUICK ACTION BUTTONS
-  // -----------------------------------------------------------
+  
   Widget _buildQuickActions(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -232,9 +232,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // -----------------------------------------------------------
-  // TODAY STRING
-  // -----------------------------------------------------------
   static String _today() {
     const days = [
       "Poniedziałek",

@@ -24,7 +24,7 @@ class ExerciseRepository {
     required this.localDataSource,
   });
 
-  /// Pobiera STRONĘ ćwiczeń — backend wspiera paginację cursorową
+  /// Pobiera stronę ćwiczeń z API lub z cache w przypadku błędu sieciowego
   /// Zwraca: items + nextCursor
   Future<ExercisePageResult> getExercises({String? after}) async {
     try {

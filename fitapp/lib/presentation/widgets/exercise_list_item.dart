@@ -51,12 +51,12 @@ class ExerciseListItem extends StatelessWidget {
 
             const SizedBox(width: 12),
 
-            /// --- TEKSTY ---
+            /// TEKSTY 
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// --- NAZWA ---
+                  ///  NAZWA 
                   Text(
                     exercise.name,
                     style: const TextStyle(
@@ -67,7 +67,7 @@ class ExerciseListItem extends StatelessWidget {
 
                   const SizedBox(height: 6),
 
-                  /// --- BODY PARTS ---
+                  ///  BODY PARTS 
                   Text(
                     exercise.bodyParts.join(', '),
                     style: TextStyle(
@@ -78,7 +78,7 @@ class ExerciseListItem extends StatelessWidget {
 
                   const SizedBox(height: 4),
 
-                  /// --- EQUIPMENT ---
+                  /// EQUIPMENT 
                   Text(
                     'Sprzęt: ${exercise.equipments.join(', ')}',
                     style: TextStyle(
