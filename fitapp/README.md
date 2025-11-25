@@ -1,16 +1,115 @@
 # fitapp
 
-A new Flutter project.
+# FitAplikacja — Przegląd ćwiczeń i plany treningowe
 
-## Getting Started
+Aplikacja mobilna stworzona w Flutterze, pozwalająca na:
+- przeglądanie ćwiczeń z publicznego API,
+- filtrowanie i wyszukiwanie ćwiczeń,
+- tworzenie własnych planów treningowych,
+- realizację treningu krok po kroku (z licznikiem serii i odpoczynków),
+- działanie w trybie offline poprzez lokalną persystencję danych (Hive),
+- podział logiki zgodnie z MVVM.
 
-This project is a starting point for a Flutter application.
+Aplikacja została przygotowana jako projekt zaliczeniowy z pełnym designem w Figma, implementacją REST API, obsługą błędów oraz separacją warstw.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Funkcjonalności
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+###  Przegląd ćwiczeń
+- lista ćwiczeń pobieranych z API,
+- wyszukiwarka,
+- filtrowanie po częściach ciała,
+- ekran szczegółów ćwiczenia.
+
+###  Offline mode
+Aplikacja zapisuje pobrane ćwiczenia w Hive, dzięki czemu:
+- jeśli użytkownik nie ma internetu — aplikacja nadal działa,
+- lista ćwiczeń pobiera się z cache.
+
+###  Plany treningowe
+- możliwość tworzenia, edytowania i usuwania planów,
+- dodawanie ćwiczeń do planu,
+- przypisywanie dnia tygodnia,
+- notatki, liczba serii i powtórzeń.
+
+###  Tryb treningu 
+- wykonywanie planu krok po kroku,
+- licznik serii,
+- timer odpoczynku,
+- pomijanie ćwiczeń,
+- zakończenie treningu.
+
+###  Nawigacja
+- dolna nawigacja: **Home / Ćwiczenia / Plany**,
+- ekran szczegółów otwierany po kliknięciu elementu na liście,
+- spójny i czytelny UX zgodny z projektem Figma.
+
+---
+
+##  Użyte API
+Aplikacja korzysta z:
+**ExerciseDB API**  
+Dokumentacja:  
+https://v2.exercisedb.dev/docs#tag/liveness
+
+Używane endpointy:
+- `/api/v1/exercises` — lista ćwiczeń (z paginacją cursorową)
+- `/api/v1/exercises/{id}` — szczegóły ćwiczenia
+
+Pobierane pola (min. 5 wymaganych):
+- `exerciseId`
+- `name`
+- `imageUrl`
+- `bodyParts`
+- `equipments`
+- `keywords`
+- `targetMuscles`
+- `secondaryMuscles`
+
+---
+
+## Architektura aplikacji
+Projekt wykorzystuje architekturę:
+
+### **MVVM + Repository + DataSource**
+
+lib/
+├─ core/
+├─ data/
+│ ├─ datasources/ (API + Hive)
+│ ├─ models/
+│ ├─ repositories/
+├─ presentation/
+│ ├─ screens/
+│ ├─ viewmodels/
+│ ├─ widgets/
+
+Każda warstwa jest odseparowana:
+- **View** → widoki i UI
+- **ViewModel** → logika, obsługa API, filtrowania, błędów
+- **Repository** → łączenie API i cache
+- **DataSource** → API + lokalny Hive
+- **Model** → struktury danych
+
+---
+
+## Technologie & biblioteki
+
+- Flutter 3.x
+- Dart
+- Dio (komunikacja HTTP)
+- Provider (zarządzanie stanem)
+- Hive + hive_flutter (lokalna baza danych offline)
+- Material 3 UI
+- Navigator / MaterialPageRoute
+- Timer & async
+
+---
+
+## Instalacja i uruchomienie
+
+### Sklonuj repozytorium
+```bash
+git clone <link do repo>
+cd <nazwa folderu>
