@@ -1,4 +1,4 @@
-# fitapp
+# Fitapp
 
 # FitAplikacja — Przegląd ćwiczeń i plany treningowe
 
